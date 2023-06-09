@@ -5,7 +5,7 @@ import { PluginOptions } from "./lib/types";
 import { DEFAULT_THEME } from "./themes";
 
 export { defineTheme } from "./lib/utils";
-export type { Colors, HslValue as HSL, PluginOptions, Radius, Theme, ThemeConfig } from "./lib/types";
+export type { Colors, HslValue, PluginOptions, Radius, Theme, ThemeConfig } from "./lib/types";
 
 export default plugin.withOptions<PluginOptions>(
 	function (options = {}) {

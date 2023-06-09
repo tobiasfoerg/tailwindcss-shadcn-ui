@@ -52,12 +52,24 @@ export type Colors = {
 	"--ring": HslValue;
 };
 
+type ConvertKey<S extends string> = S extends `--${infer T}-${infer U}`
+	? `${T}${Capitalize<ConvertKey<U>>}`
+	: S extends `--${infer T}`
+	? T
+	: S;
+
+export type ColorsToCamleCase<T> = T extends object
+	? {
+			[P in keyof T as ConvertKey<P & string>]: T[P];
+	  }
+	: T;
+
 export type ThemeConfig = {
 	base: {
 		radius: Radius;
 	};
-	light: Colors;
-	dark: Colors;
+	light: ColorsToCamleCase<Colors>;
+	dark: ColorsToCamleCase<Colors>;
 };
 
 export type Theme = {
@@ -73,6 +85,6 @@ export type Theme = {
 	".dark"?: ToHslString<Colors>;
 };
 
-type ToHslString<T> = {
+export type ToHslString<T> = {
 	[P in keyof T]: HslString;
 };
