@@ -7,6 +7,16 @@ const config = {
 	importOrderParserPlugins: ["typescript"],
 	importOrderTypeScriptVersion: "5.0.0",
 	plugins: ["prettier-plugin-packagejson", "@ianvs/prettier-plugin-sort-imports"],
+
+	overrides: [
+		{
+			files: ["*.yml", "*.yaml"],
+			options: {
+				useTabs: false,
+				tabWidth: 2,
+			},
+		},
+	],
 };
 
 module.exports = config;

@@ -6,3 +6,6 @@ coverage/
 .vscode
 .idea
 .fleet
+
+
+.npmrc
