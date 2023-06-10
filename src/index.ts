@@ -2,14 +2,14 @@
 import tailwindAnimate from "tailwindcss-animate";
 import plugin from "tailwindcss/plugin";
 import { PluginOptions } from "./lib/types";
-import { DEFAULT_THEME } from "./themes";
+import { DEFAULT } from "./themes";
 
 export { defineTheme } from "./lib/utils";
 export type { Colors, HslValue, PluginOptions, Radius, Theme, ThemeConfig } from "./lib/types";
 
 export default plugin.withOptions<PluginOptions>(
 	function (options = {}) {
-		options.theme ??= DEFAULT_THEME;
+		options.theme ??= DEFAULT;
 
 		return function ({ addBase, theme }) {
 			addBase({

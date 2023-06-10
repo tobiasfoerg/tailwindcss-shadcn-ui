@@ -1,6 +1,11 @@
 {
 	"name": "tailwindcss-shadcn-ui",
 	"version": "0.0.1",
+	"description": "Tailwindcss plugin to setup requirements for shadcn ui.",
+	"keywords": [
+		"tailwind",
+		"shadcn"
+	],
 	"repository": "https://github.com/tobiasfoerg/tailwindcss-shadcn-ui",
 	"license": "MIT",
 	"sideEffects": false,
@@ -19,6 +24,9 @@
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "tsup",
 		"format": "prettier --write .",
@@ -44,7 +52,7 @@
 		"vitest": "^0.32.0"
 	},
 	"peerDependencies": {
-		"tailwindcss": ">=3",
+		"tailwindcss": ">=3.2",
 		"tailwindcss-animate": ">=1"
 	},
 	"peerDependenciesMeta": {

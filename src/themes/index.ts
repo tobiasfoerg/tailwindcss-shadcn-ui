@@ -1,1 +1,1 @@
-export { DEFAULT_THEME } from "./default";
+export { DEFAULT as DEFAULT } from "./default";
