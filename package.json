@@ -1,6 +1,6 @@
 {
 	"name": "tailwindcss-shadcn-ui",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"repository": "https://github.com/tobiasfoerg/tailwindcss-shadcn-ui",
 	"license": "MIT",
 	"sideEffects": false,
