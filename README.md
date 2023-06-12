@@ -7,9 +7,6 @@
   <a href="https://www.npmjs.com/package/tailwindcss-shadcn-ui">
     <img alt="Types Included" src="https://badgen.net/npm/types/tailwindcss-shadcn-ui" />
   </a>
-  <a href="https://bundlephobia.com/result?p=tailwindcss-shadcn-ui">
-    <img alt="Minizipped Size" src="https://img.shields.io/bundlephobia/minzip/tailwindcss-shadcn-ui" />
-  </a>
   <a href="https://github.com/tobiasfoerg/tailwindcss-shadcn-ui/blob/main/LICENSE">
     <img alt="Apache-2.0 License" src="https://badgen.net/github/license/tobiasfoerg/tailwindcss-shadcn-ui" />
   </a>
