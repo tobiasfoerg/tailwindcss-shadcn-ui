@@ -16,6 +16,12 @@ const config = {
 				tabWidth: 2,
 			},
 		},
+		{
+			files: ["*.md"],
+			options: {
+				useTabs: false,
+			},
+		},
 	],
 };
 
