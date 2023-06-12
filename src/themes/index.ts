@@ -1,1 +1,1 @@
-export { DEFAULT as DEFAULT } from "./default";
+export { DEFAULT } from "./default";

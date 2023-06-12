@@ -1,4 +1,4 @@
-import { Theme } from "../index";
+import { Theme } from "~/lib/types";
 
 export const DEFAULT: Theme = {
 	":root": {
