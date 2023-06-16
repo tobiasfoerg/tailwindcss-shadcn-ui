@@ -16,11 +16,10 @@
 </p>
 <hr/>
 
-A plugin for Tailwind CSS v3.2+ that provides base utilities for shadcn ui.
+A plugin/preset for Tailwind CSS v3.2+ that provides base utilities for shadcn ui.
 
 ## Installation
 
-Install the plugin  
 This plugin requires `tailwindcss` and `tailwindcss-animate`
 
 **npm**
@@ -41,37 +40,68 @@ yarn install -D tailwindcss-shadcn-ui
 pnpm add -D tailwindcss-shadcn-ui
 ```
 
-Add the plugin to your `tailwind.config.{js|ts}` file.
+## Configuration
 
-```typescript
+### Recommend
+
+Add the shadcn preset to your tailwind config file unsing the preset creator function.
+
+> With this approach we can get a full configured preset including `tailwindcss-animate` plugin and dark mode set to class. Shoutout to [@simonswiss](https://twitter.com/simonswiss). He metioned the preset way in his video.
+
+```ts
 // tailwind.config.ts
+import { type Config } from "tailwindcss";
+import { createPreset } from "tailwindcss-shadcn-ui";
 
+export default {
+    presets: [createPreset()],
+    // ...
+} satisfies Config;
+```
+
+### Alternative
+
+With this approach we can not preconfigure the plugins to include the `tailwindcss-animate` plugin. So you have to include it yourself.
+
+<details>
+  <summary>Using the plugin.</summary>
+
+```ts
+// tailwind.config.ts
+import { type Config } from "tailwindcss";
+import tailwindAnimate from "tailwindcss-animate";
 import tailwindShadcnUi from "tailwindcss-shadcn-ui";
 
 export default {
+    darkMode: ["class"],
     // ...
     plugins: [
         // ...
         tailwindShadcnUi,
+        tailwindAnimate,
     ],
+} satisfies Config;
+```
+
+</details>
+
+<br/>
+
+## Theme presets
+
+```typescript
+// tailwind.config.ts
+import { createPreset } from "tailwindcss-shadcn-ui";
+import { DEFAULT } from "tailwindcss-shadcn-ui/themes";
+
+export default {
+    presets: [createPreset({ theme: DEFAULT })],
+    // ..
 };
 ```
 
-```javascript
-// tailwind.config.js
-
-module.exports = {
-    // ...
-    plugins: [
-        // ...
-        require("tailwindcss-shadcn-ui"),
-    ],
-};
-```
-
-This will add the plugin with the default theme. You can alternativly use one of the theme presets or create your own theme.
-
-### Theme presets
+<details>
+  <summary>Plugin and theme.</summary>
 
 ```typescript
 // tailwind.config.ts
@@ -89,7 +119,10 @@ export default {
 };
 ```
 
-#### Available presets
+</details>
+<br/>
+
+### Available presets
 
 | Preset  | Files                                        |
 | ------- | -------------------------------------------- |
@@ -100,13 +133,12 @@ export default {
 ```typescript
 // tailwind.config.ts
 
-import tailwindShadcnUi, { defineTheme } from "tailwindcss-shadcn-ui";
+import { createPreset, defineTheme } from "tailwindcss-shadcn-ui";
+import { DEFAULT } from "tailwindcss-shadcn-ui/themes";
 
 export default {
-    // ...
-    plugins: [
-        // ...
-        tailwindShadcnUi({
+    presets: [
+        createPreset({
             theme: defineTheme({
                 base: {
                     radius: "2rem", // string|number(pixels)
@@ -117,8 +149,22 @@ export default {
                     //...
                 },
                 dark: {
+                    background: "#000000", // `#${string}`
                     // ...
                 },
+            }),
+        }),
+    ],
+    // ..
+};
+
+export default {
+    // ...
+    plugins: [
+        // ...
+        tailwindShadcnUi({
+            theme: defineTheme({
+                // ..
             }),
         }),
     ],
@@ -127,7 +173,7 @@ export default {
 
 ### The result
 
-the plugin adds following tailwind config.
+the preset adds following tailwind config.
 
 ```typescript
 export default {
