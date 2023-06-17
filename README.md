@@ -85,8 +85,6 @@ export default {
 
 </details>
 
-<br/>
-
 ## Theme presets
 
 ```typescript
@@ -120,7 +118,6 @@ export default {
 ```
 
 </details>
-<br/>
 
 ### Available presets
 
