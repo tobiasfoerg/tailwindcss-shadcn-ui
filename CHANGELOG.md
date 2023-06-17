@@ -1,5 +1,11 @@
 # tailwindcss-shadcn-ui
 
+## 0.2.0
+
+### Minor Changes
+
+-   [#5](https://github.com/tobiasfoerg/tailwindcss-shadcn-ui/pull/5) [`4f362a1`](https://github.com/tobiasfoerg/tailwindcss-shadcn-ui/commit/4f362a124a7d97a8f99712d95d000a8c2f1cc847) Thanks [@tobiasfoerg](https://github.com/tobiasfoerg)! - Add fontFamily variable to plugin
+
 ## 0.1.0
 
 ### Minor Changes
