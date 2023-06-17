@@ -1,3 +1,4 @@
+import { Config } from "tailwindcss";
 // @ts-expect-error: no type definitions
 import tailwindAnimate from "tailwindcss-animate";
 import plugin from "tailwindcss/plugin";
@@ -5,24 +6,38 @@ import { PluginOptions } from "./lib/types";
 import { DEFAULT } from "./themes";
 
 export { defineTheme } from "./lib/utils";
-export type { Colors, HslValue, PluginOptions, Radius, Theme, ThemeConfig } from "./lib/types";
+export type {
+	ThemeColors as Colors,
+	CssColor as HslValue,
+	PluginOptions,
+	Radius,
+	Theme,
+	ThemeConfig,
+} from "./lib/types";
 
-export default plugin.withOptions<PluginOptions>(
+export function createPreset(options: PluginOptions = {}): Config {
+	return {
+		darkMode: ["class"],
+		content: [],
+		plugins: [tailwindAnimate, shadcnPlugin(options)],
+	};
+}
+
+const shadcnPlugin = plugin.withOptions<PluginOptions>(
 	function (options = {}) {
 		options.theme ??= DEFAULT;
 
-		return function ({ addBase, theme }) {
+		return function ({ addBase }) {
 			addBase({
 				...options.theme,
 			});
 
 			addBase({
 				"*": {
-					"border-color": theme("colors.border"),
+					"@apply border-border": {},
 				},
 				body: {
-					"background-color": theme("colors.background"),
-					color: theme("colors.foreground"),
+					"@apply bg-background text-foreground": {},
 					"font-feature-settings": `"rlig" 1, "calt" 1`,
 				},
 			});
@@ -30,8 +45,14 @@ export default plugin.withOptions<PluginOptions>(
 	},
 	function (_options) {
 		return {
-			plugins: [tailwindAnimate],
 			theme: {
+				container: {
+					center: true,
+					padding: "2rem",
+					screens: {
+						"2xl": "1400px",
+					},
+				},
 				extend: {
 					colors: {
 						border: "hsl(var(--border) / <alpha-value>)",
@@ -92,3 +113,5 @@ export default plugin.withOptions<PluginOptions>(
 		};
 	}
 );
+
+export default shadcnPlugin;

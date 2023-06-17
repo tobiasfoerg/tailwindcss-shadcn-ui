@@ -4,52 +4,53 @@ export type PluginOptions = {
 export type Hue = number;
 export type Saturation = number;
 export type Lightness = number;
+export type HexString = `#${string}`;
 export type HslString = `${Hue} ${Saturation}% ${Lightness}%`;
 export type HslTuple = [hue: Hue, saturation: Saturation, lightness: Lightness];
-export type HslValue = HslString | HslTuple;
+export type CssColor = HslString | HslTuple | HexString;
 export type Radius = string | `${number}rem` | number;
 
-export type Colors = {
+export type ThemeColors = {
 	/**
 	 * Default backgrounds color of \<body />...etc
 	 */
-	"--background": HslValue;
+	"--background": CssColor;
 	/**
 	 * Default foregrounds color of \<body />...etc
 	 */
-	"--foreground": HslValue;
+	"--foreground": CssColor;
 
 	/**
 	 * Muted backgrounds such as \<TabsList />, \<Skeleton /> and \<Switch />
 	 */
-	"--muted": HslValue;
+	"--muted": CssColor;
 	/**
 	 * Muted foregrounds such as \<TabsList />, \<Skeleton /> and \<Switch />
 	 */
-	"--muted-foreground": HslValue;
+	"--muted-foreground": CssColor;
 
-	"--popover": HslValue;
-	"--popover-foreground": HslValue;
+	"--popover": CssColor;
+	"--popover-foreground": CssColor;
 
-	"--card": HslValue;
-	"--card-foreground": HslValue;
+	"--card": CssColor;
+	"--card-foreground": CssColor;
 
-	"--border": HslValue;
-	"--input": HslValue;
+	"--border": CssColor;
+	"--input": CssColor;
 
-	"--primary": HslValue;
-	"--primary-foreground": HslValue;
+	"--primary": CssColor;
+	"--primary-foreground": CssColor;
 
-	"--secondary": HslValue;
-	"--secondary-foreground": HslValue;
+	"--secondary": CssColor;
+	"--secondary-foreground": CssColor;
 
-	"--accent": HslValue;
-	"--accent-foreground": HslValue;
+	"--accent": CssColor;
+	"--accent-foreground": CssColor;
 
-	"--destructive": HslValue;
-	"--destructive-foreground": HslValue;
+	"--destructive": CssColor;
+	"--destructive-foreground": CssColor;
 
-	"--ring": HslValue;
+	"--ring": CssColor;
 };
 
 type ConvertKey<S extends string> = S extends `--${infer T}-${infer U}`
@@ -68,21 +69,21 @@ export type ThemeConfig = {
 	base: {
 		radius: Radius;
 	};
-	light: ColorsToCamleCase<Colors>;
-	dark: ColorsToCamleCase<Colors>;
+	light: ColorsToCamleCase<ThemeColors>;
+	dark: ColorsToCamleCase<ThemeColors>;
 };
 
 export type Theme = {
 	/**
 	 * Default theme
 	 */
-	":root": ToHslString<Colors> & {
+	":root": ToHslString<ThemeColors> & {
 		"--radius": string;
 	};
 	/**
 	 * Dark theme
 	 */
-	".dark"?: ToHslString<Colors>;
+	".dark"?: ToHslString<ThemeColors>;
 };
 
 export type ToHslString<T> = {
