@@ -1,6 +1,7 @@
 import { Config } from "tailwindcss";
 // @ts-expect-error: no type definitions
 import tailwindAnimate from "tailwindcss-animate";
+import { fontFamily } from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 import { PluginOptions } from "./lib/types";
 import { DEFAULT } from "./themes";
@@ -54,6 +55,9 @@ const shadcnPlugin = plugin.withOptions<PluginOptions>(
 					},
 				},
 				extend: {
+					fontFamily: {
+						sans: ["var(--font-sans)", ...fontFamily.sans],
+					},
 					colors: {
 						border: "hsl(var(--border) / <alpha-value>)",
 						input: "hsl(var(--input) / <alpha-value>)",

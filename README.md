@@ -138,7 +138,8 @@ export default {
         createPreset({
             theme: defineTheme({
                 base: {
-                    radius: "2rem", // string|number(pixels)
+                    radius: "2rem", // string|number(pixels),
+                    fontFamily: "Inter", // string|string[]
                 },
                 light: {
                     background: "0 0% 0%", // `${number} ${number}% ${number}%`
@@ -176,7 +177,17 @@ the preset adds following tailwind config.
 export default {
     plugins: [tailwindAnimate],
     theme: {
+        container: {
+            center: true,
+            padding: "2rem",
+            screens: {
+                "2xl": "1400px",
+            },
+        },
         extend: {
+            fontFamily: {
+                sans: ["var(--font-sans)", ...fontFamily.sans],
+            },
             colors: {
                 border: "hsl(var(--border) / <alpha-value>)",
                 input: "hsl(var(--input) / <alpha-value>)",
@@ -270,6 +281,7 @@ The plugin adds following base styles with values based on your configured theme
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+    --font-sans: Inter;
 }
 
 .dark {
