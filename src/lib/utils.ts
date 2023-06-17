@@ -11,10 +11,13 @@ import {
 } from "./types";
 
 export function defineTheme<T extends SetOptional<ThemeConfig, "dark">>(config: T): Theme {
-	const { base, dark, light } = config;
+	const { base = {}, dark, light } = config;
 	return {
 		":root": {
-			"--radius": typeof base.radius === "number" ? `${base.radius}px` : base.radius,
+			"--radius": base.radius ? (typeof base.radius === "number" ? `${base.radius}px` : base.radius) : "0",
+			...(base.fontFamily
+				? { "--font-sans": Array.isArray(base.fontFamily) ? base.fontFamily.join(", ") : base.fontFamily }
+				: {}),
 			...toCSSRuleObject(light),
 		},
 		...(dark ? { ".dark": toCSSRuleObject(dark) } : {}),

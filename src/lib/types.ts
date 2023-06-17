@@ -66,8 +66,9 @@ export type ColorsToCamleCase<T> = T extends object
 	: T;
 
 export type ThemeConfig = {
-	base: {
-		radius: Radius;
+	base?: {
+		radius?: Radius;
+		fontFamily?: string | string[];
 	};
 	light: ColorsToCamleCase<ThemeColors>;
 	dark: ColorsToCamleCase<ThemeColors>;
@@ -79,6 +80,7 @@ export type Theme = {
 	 */
 	":root": ToHslString<ThemeColors> & {
 		"--radius": string;
+		"--font-sans"?: string;
 	};
 	/**
 	 * Dark theme
